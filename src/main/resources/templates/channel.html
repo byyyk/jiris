@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
+
+<body class="h-100">
+    <section class="flex-grow-1" layout:fragment="content">
+        <div>
+            <h5 th:text="'#' + ${channel.name}"></h5>
+        </div>
+
+        <div class="text-break">
+            <span th:each="message : ${history.messages}">
+                <p>
+                [<span th:text="${#temporals.formatISO(message.postedAt)}"></span>] <span th:text="${message.postedBy}"></span>: <span th:text="${message.text}"></span>
+                </p>
+            </span>
+        </div>
+        <div class="flex-grow-1">
+            <form action="#" th:action="@{/channel/{channelId}/post(channelId=${channel.id})}" method="post" class="row">
+                <div class="col">
+                    <input id="message" th:name="message" type="text" placeholder="Your message" class="form-control">
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Send" class="btn btn-primary mb-3">
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

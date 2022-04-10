@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <div>
+            <form action="#" th:action="@{/channel/join}" method="post" class="row">
+                <div>
+                    <label for="name" class="col-sm-2 col-form-label">I want to talk about</label>
+                </div>
+                <div class="col-auto">
+                    <input id="name" th:name="channelName" type="text" placeholder="Channel" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <input type="submit" value="Join" class="btn btn-primary mb-3">
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

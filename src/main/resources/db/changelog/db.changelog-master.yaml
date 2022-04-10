@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-chat_user-table
+      author: mckulpa
+      changes:
+        - createTable:
+            tableName: chat_user
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+  - changeSet:
+      id: create-message-table
+      author: mckulpa
+      changes:
+        - createTable:
+            tableName: message
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: posted_by
+                  type: uuid
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: posted_at
+                  type: timestamp
+              - column:
+                  name: text
+                  type: nvarchar
+              - column:
+                  name: channel_id
+                  type: uuid
+  - changeSet:
+      id: create-channel-table
+      author: mckulpa
+      changes:
+        - createTable:
+            tableName: channel
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+
