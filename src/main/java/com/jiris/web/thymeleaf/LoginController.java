@@ -11,23 +11,21 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String showLogin(Model model) {
-        model.addAttribute("credentials", new CredentialsModel(""));
+    @GetMapping("/login")
+    public String showLogin() {
         return "login";
     }
 
-    @PostMapping
-    public String login(@ModelAttribute("credentials") CredentialsModel credentials, HttpServletResponse response) {
-        var user = userService.createOrLogin(credentials.username());
-        //TODO session ID
-        response.addCookie(new Cookie(CookieNames.USER_ID, user.info().id().toString()));
-        return "redirect:/channel/join";
-    }
+//    @PostMapping("/login")
+//    public String login(@ModelAttribute("credentials") CredentialsModel credentials, HttpServletResponse response) {
+//        var user = userService.createOrLogin(credentials.username());
+//        //TODO session ID
+//        response.addCookie(new Cookie(CookieNames.USER_ID, user.info().id().toString()));
+//        return "redirect:/channel/join";
+//    }
 }
